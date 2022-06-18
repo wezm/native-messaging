@@ -1,8 +1,8 @@
-# Chrome Native Messaging in Rust
+# Native Messaging Codec
 
-Google Chrome allows native applications to interface with browser plugins as described in their [documentation](https://developer.chrome.com/extensions/nativeMessaging). This Rust crate provides simple functions for encoding/decoding JSON messages and handling errors during this process.
+Web browsers supporting the web extension API allow native applications to interface with browser plugins as described in their [documentation](https://developer.chrome.com/extensions/nativeMessaging). This Rust crate provides simple functions for encoding/decoding JSON messages and handling errors during this process.
 
-[**API Documentation**](https://docs.rs/chrome_native_messaging)
+[**API Documentation**](https://docs.rs/native_messaging)
 
 ## License
 

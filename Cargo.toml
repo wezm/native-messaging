@@ -1,8 +1,8 @@
 [package]
 authors = ["Chris Chamberlain <c.chamberlain@iinet.net.au>"]
-name = "chrome_native_messaging"
-keywords = ["chrome", "native", "messaging", "host", "protocol"]
-description = "Implementation of Chrome's Native Messaging protocol"
+name = "native-messaging"
+keywords = ["chrome", "firefox", "safari", "native", "messaging", "host", "protocol"]
+description = "Implementation of the Native Messaging protocol"
 version = "0.2.0"
 edition = "2018"
 license = "MIT OR Apache-2.0"

@@ -9,13 +9,13 @@ pub use crate::errors::Error;
 use std::fmt::Display;
 
 /// Writes the given JSON data to stdout, thereby 'sending' a message
-/// back to Chrome. *If you are on stable, then you also need to import macros
+/// back to the browser. *If you are on stable, then you also need to import macros
 /// from the `serde_json` crate.*
 ///
 /// # Example
 ///
 /// ```
-/// use chrome_native_messaging::send;
+/// use native_messaging::send;
 /// use serde_json::json;
 ///
 /// send!({ "msg": "Hello, world!" });
@@ -29,8 +29,7 @@ macro_rules! send {
 }
 
 /// Reads input from a stream, decoded according to
-/// Chrome's own documentation on native messaging.
-/// (https://developer.chrome.com/extensions/nativeMessaging)
+/// [Chrome's own documentation on native messaging](https://developer.chrome.com/extensions/nativeMessaging).
 ///
 /// 1. A 32bit unsigned integer specifies how long the message is.
 /// 2. The message is encoded in JSON
@@ -39,7 +38,7 @@ macro_rules! send {
 ///
 /// ```
 /// use std::io;
-/// use chrome_native_messaging::{read_input, Error};
+/// use native_messaging::{read_input, Error};
 ///
 /// read_input(io::stdin())
 ///     .err().expect("doctest should return unexpected eof");
@@ -64,14 +63,13 @@ pub fn read_input<R: Read>(mut input: R) -> Result<Value, Error> {
 }
 
 /// Writes an output to a stream, encoded according to
-/// Chrome's documentation on native messaging.
-/// (https://developer.chrome.com/extensions/nativeMessaging)
+/// [Chrome's documentation on native messaging](https://developer.chrome.com/extensions/nativeMessaging).
 /// Takes a custom value which implements serde::Serialize.
 ///
 /// # Example
 ///
 /// ```
-/// use chrome_native_messaging::send_message;
+/// use native_messaging::send_message;
 /// use std::io;
 /// use serde::Serialize;
 /// use serde_json::json;
@@ -100,7 +98,7 @@ pub fn send_message<W: Write, T: Serialize>(mut output: W, value: &T) -> Result<
 }
 
 /// Handles a panic in the application code, by sending
-/// a message back to Chrome before exiting.
+/// a message back to the browser before exiting.
 fn handle_panic(info: &std::panic::PanicInfo) {
     let msg = match info.payload().downcast_ref::<&'static str>() {
         Some(s) => *s,
@@ -127,7 +125,7 @@ fn handle_panic(info: &std::panic::PanicInfo) {
 /// # Example
 ///
 /// ```
-/// use chrome_native_messaging::event_loop;
+/// use native_messaging::event_loop;
 /// use std::io;
 /// use serde::Serialize;
 /// use serde_json::{json, Value};

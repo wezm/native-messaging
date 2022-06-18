@@ -1,6 +1,6 @@
 use serde::Serialize;
 use serde_json::json;
-use chrome_native_messaging::{send_message, Error};
+use native_messaging::{send_message, Error};
 use std::io::sink;
 
 #[derive(Serialize)]
